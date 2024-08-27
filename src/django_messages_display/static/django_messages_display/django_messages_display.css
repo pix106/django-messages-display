@@ -1,3 +1,18 @@
+:root {
+    --success-bg-color: hsl(132, 32%, 36%);
+    --success-text-color: hsl(0, 0%, 96%);
+    --success-svg-color: hsl(0, 0%, 96%);
+    --info-bg-color: hsl(220, 61%, 52%);
+    --info-text-color: hsl(0, 0%, 96%);
+    --info-svg-color: hsl(0, 0%, 96%);
+    --warning-bg-color: hsl(48, 100%, 62%);
+    --warning-text-color: hsl(0, 0%, 14%);
+    --warning-svg-color: hsl(0, 0%, 25%);
+    --error-bg-color: hsl(0, 100%, 37%);
+    --error-text-color: hsl(0, 2%, 92%);
+    --error-svg-color: hsl(0, 2%, 92%);
+}
+
 .django_messages_display_messages_container {
     list-style-type: none;
     position: fixed;
@@ -33,35 +48,51 @@
 }
 
 .django_messages_display_messages_container>li.success {
-    background-color: hsl(132, 32%, 36%);
+    background-color: var(--success-bg-color);
 }
 
 .django_messages_display_messages_container>li.success>p {
-    color: hsl(0, 0%, 96%);
+    color: var(--success-text-color);
+}
+
+.django_messages_display_messages_container>li.success>button>svg {
+    color: var(--success-svg-color);
 }
 
 .django_messages_display_messages_container>li.info {
-    background-color: hsl(220, 61%, 52%);
+    background-color: var(--info-bg-color);
 }
 
 .django_messages_display_messages_container>li.info>p {
-    color: hsl(0, 0%, 96%);
+    color: var(--info-text-color);
+}
+
+.django_messages_display_messages_container>li.info>button>svg {
+    color: var(--info-svg-color);
 }
 
 .django_messages_display_messages_container>li.warning {
-    background-color: hsl(48, 100%, 62%);
+    background-color: var(--warning-bg-color);
 }
 
 .django_messages_display_messages_container>li.warning>p {
-    color: hsl(0, 0%, 25%);
+    color: var(--warning-text-color);
+}
+
+.django_messages_display_messages_container>li.warning>button>svg {
+    color: var(--warning-svg-color);
 }
 
 .django_messages_display_messages_container>li.error {
-    background-color: hsl(0, 100%, 37%);
+    background-color: var(--error-bg-color);
 }
 
 .django_messages_display_messages_container>li.error>p {
-    color: hsl(0, 2%, 92%);
+    color: var(--error-text-color);
+}
+
+.django_messages_display_messages_container>li.error>button>svg {
+    color: var(--error-svg-color);
 }
 
 .django_messages_display_messages_container>li>p {
@@ -72,9 +103,11 @@
 .django_messages_display_messages_container>li>button {
     all: unset;
     cursor: pointer;
-    padding: 0.25rem;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
     display: inline-flex;
     align-items: center;
+    align-self: start;
 }
 
 .django_messages_display_messages_container>li>button>svg {
