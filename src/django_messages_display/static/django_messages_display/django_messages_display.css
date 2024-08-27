@@ -34,21 +34,33 @@
 
 .django_messages_display_messages_container>li.success {
     background-color: hsl(132, 32%, 36%);
+}
+
+.django_messages_display_messages_container>li.success>p {
     color: hsl(0, 0%, 96%);
 }
 
 .django_messages_display_messages_container>li.info {
     background-color: hsl(220, 61%, 52%);
+}
+
+.django_messages_display_messages_container>li.info>p {
     color: hsl(0, 0%, 96%);
 }
 
 .django_messages_display_messages_container>li.warning {
     background-color: hsl(48, 100%, 62%);
+}
+
+.django_messages_display_messages_container>li.warning>p {
     color: hsl(0, 0%, 25%);
 }
 
 .django_messages_display_messages_container>li.error {
     background-color: hsl(0, 100%, 37%);
+}
+
+.django_messages_display_messages_container>li.error>p {
     color: hsl(0, 2%, 92%);
 }
 
