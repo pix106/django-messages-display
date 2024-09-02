@@ -29,6 +29,11 @@
     line-height: 1.25rem;
 }
 
+.django_messages_display_messages_container.hidden {
+    pointer-events: none;
+}
+
+
 .django_messages_display_messages_container>li {
     border-radius: 0.25rem;
     display: flex;
@@ -41,6 +46,7 @@
 .django_messages_display_messages_container>li.hidden {
     opacity: 0;
     transform: translate(3em, 0);
+    pointer-events: none;
 }
 
 .django_messages_display_messages_container>li.hidden>button {

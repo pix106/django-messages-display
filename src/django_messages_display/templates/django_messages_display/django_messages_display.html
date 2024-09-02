@@ -10,19 +10,38 @@
   </ul>
 
   <script>
-    message_elements = document.querySelectorAll('.django_messages_display_messages_container li')
-    message_elements.forEach(function(element, index) {
-      setTimeout(function() {
-        element.classList.remove('hidden');  
-      }, index*75);
+    (function() {
+      const container = document.querySelector('.django_messages_display_messages_container');
+      const messageElements = container.querySelectorAll('li');
 
-      setTimeout(function() {
-        element.classList.add('hidden');  
-      }, (index*75) + 5000);
-    })
+      function checkAllHidden() {
+        const allHidden = Array.from(messageElements).every(el => el.classList.contains('hidden'));
+        if (allHidden) {
+          container.classList.add('hidden');
+        }
+      }
 
-    function close_message(button_element) {
-      button_element.parentElement.classList.add('hidden')
-    }
+      messageElements.forEach((element, index) => {
+        const showDelay = index * 75;
+        const hideDelay = showDelay + 5000;
+
+        setTimeout(() => {
+          element.classList.remove('hidden');
+        }, showDelay);
+
+        setTimeout(() => {
+          element.classList.add('hidden');
+          checkAllHidden();
+        }, hideDelay);
+
+        const closeButton = element.querySelector('button');
+        if (closeButton) {
+          closeButton.addEventListener('click', () => {
+            element.classList.add('hidden');
+            checkAllHidden();
+          });
+        }
+      });
+    })();
   </script>
 {% endif %}
