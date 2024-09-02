@@ -27,7 +27,8 @@ INSTALLED_APPS = [
    ```
    {% django_messages_display %}
    ```
-A good place to add this is before the closing body tag `</body>`.
+   A good place to add this is before the closing body tag `</body>`.
+
 3. Load the CSS for the styling to apply:
    ```
    {% load static %}
