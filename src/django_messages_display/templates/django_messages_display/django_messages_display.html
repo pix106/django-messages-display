@@ -1,10 +1,11 @@
-{% load django_messages_display_tags %}
 {% if messages %}
   <ul class="django_messages_display_messages_container">
     {% for message in messages %}
       <li role="status" aria-live="polite" class="django_messages_display_message {% if message.tags %}{{ message.tags }}{% endif %} hidden">
         <p>{{ message }}</p>
-        {% close_button_element %}
+        {% if include_close_button %}
+          {% include "django_messages_display/close_button.html" %}
+        {% endif %}
       </li>
     {% endfor %}
   </ul>

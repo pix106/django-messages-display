@@ -2,13 +2,13 @@
 Display messages from django.contrib.messages as notifications in the browser.
 
 ## Setup
-Install package using `pip`:
+Install the package using `pip`:
 
 ```shell
 python -m pip install django-messages-display
 ```
 
-Add it to the installed apps:
+Add it to the installed apps of your project:
 ```python
 INSTALLED_APPS = [
     ...
@@ -18,24 +18,53 @@ INSTALLED_APPS = [
 ```
 
 ## How to use
-Include the package template in templates where notifications are needed. If site-wide notifications apply for the whole site, it is convenient to add it to the base template, if there is one.
+1. Load the template tag in your template:
+   ```
+   {% load django_messages_display %}
+   ```
 
-```
-{% include 'django_messages_display/django_messages_display.html' %}
-```
+2. Use the `django_messages_display` tag where you want the notifications to appear:
+   ```
+   {% django_messages_display %}
+   ```
+A good place to add this is before the closing body tag `</body>`.
+3. Load the CSS for the styling to apply:
+   ```
+   {% load static %}
+   ...
+   <head>
+      ...
+      <link rel="stylesheet" href="{% static 'django_messages_display/django_messages_display.css' %}">
+   </head>
+   ```
 
-Further, for the styling to apply, the CSS should be loaded:
-```
+### Example
+It is convenient to integrate django-messages-display in your base template:
+
+```html
+<!-- base.html -->
 {% load static %}
+{% load django_messages_display %}
 ...
 <head>
-    ...
-    <link rel="stylesheet" href="{% static 'django_messages_display/django_messages_display.css' %}">
+   ...
+   <link rel="stylesheet" href="{% static 'django_messages_display/django_messages_display.css' %}">
 </head>
+...
+{% django_messages_display %}
+</body>
+...
+```
+
+## Configuration
+To include a close button for each message, add the following to your Django settings:
+
+```python
+DJANGO_MESSAGES_DISPLAY_CLOSE_BUTTON = True
 ```
 
 ## Accessibility
-Notifications have the relevant attributes, so that the screen reader announces each one without interrupting the users' flow.
-Even though visually the notifications disappear after a certain amount of time, they remain in the document in order to be accessible by the screen reader on demand.
+The notifications have the relevant attributes so that screen readers announce each one without interrupting the user's flow.
+Even though the notifications visually disappear after a certain amount of time, they remain in the document to be accessible by screen readers on demand.
 
-The colors used for the notifications, meet the WCAG (2.1) AA contrast levels.
+The colors used for the notifications meet the WCAG 2.1 AA contrast levels.
